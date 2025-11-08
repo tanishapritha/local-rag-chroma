@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<title>Pro RAG — PDF + Image</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+<div class="container">
+  <div class="header">
+    <h1>Document Intelligence</h1>
+    <div id="stats" class="stats">Loading statistics...</div>
+  </div>
+
+  <div class="grid">
+    <!-- Left Column -->
+    <div>
+      <!-- Upload Panel -->
+      <div class="panel">
+        <div class="panel-header">Upload Documents</div>
+        <div class="panel-body">
+          <div id="drop" class="dropzone">
+            <div class="dropzone-icon">📁</div>
+            <div class="dropzone-text">Drop PDF or image files here</div>
+            <button id="pick" class="btn btn-secondary" type="button">Browse Files</button>
+            <input id="fileInput" type="file" multiple accept=".pdf,image/*" hidden />
+          </div>
+          <div class="btn-group">
+            <button id="uploadBtn" class="btn btn-primary" type="button">Upload</button>
+            <button id="resetBtn" class="btn btn-secondary" type="button">Reset Index</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documents Panel -->
+      <div class="panel" style="margin-top: 24px;">
+        <div class="panel-header">Documents</div>
+        <div class="panel-body">
+          <div id="files" class="docs-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div>
+      <!-- Search Panel -->
+      <div class="panel">
+        <div class="panel-header">Search & Preview</div>
+        <div class="panel-body">
+          <div class="search-bar">
+            <input id="searchQ" class="input" placeholder="Search your documents..."/>
+            <button id="searchBtn" class="btn btn-primary">Search</button>
+          </div>
+          
+          <div class="control-group">
+            <span class="control-label">Results (K)</span>
+            <span class="control-value" id="kVal">4</span>
+            <input id="k" type="range" min="1" max="8" step="1" value="4"/>
+          </div>
+
+          <div id="chunks" class="chunks-container"></div>
+        </div>
+      </div>
+
+      <!-- Chat Panel -->
+      <div class="panel" style="margin-top: 24px;">
+        <div class="panel-header">Ask Questions</div>
+        <div class="panel-body">
+          <div class="chat-container">
+            <div id="msgs" class="messages"></div>
+            
+            <div class="control-group" style="margin-bottom: 12px;">
+              <span class="control-label">Temperature</span>
+              <span class="control-value" id="tVal">0.1</span>
+              <input id="t" type="range" min="0" max="1" step="0.1" value="0.1" />
+            </div>
+
+            <div class="chat-input-group">
+              <input id="q" class="input" placeholder="Ask about your documents... (Ctrl+Enter to send)"/>
+              <button id="askBtn" class="btn btn-primary">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
