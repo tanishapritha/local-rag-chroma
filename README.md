@@ -2,7 +2,7 @@
 
 Retrieval-Augmented Generation system using Chroma DB and Ollama for local document Q&A.
 
-![RAG Pipeline](flowchart.png)
+![RAG Pipeline](images/flowchart.png)
 
 ## How It Works
 
@@ -29,3 +29,19 @@ pip install -r requirements.txt
 ollama pull llama2
 python app.py
 ```
+
+- Check live server web
+
+## Demo
+
+### Document Intelligence
+![Document Intelligence](images/ss1.png)
+
+### Ollama Setup
+![Ollama Setup](images/ss2.png)
+
+### Semantic Search
+![Semantic Search](images/ss3.png)
+
+### Generated Response
+![Generated Response](images/ss4.png)
