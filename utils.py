@@ -1,9 +1,9 @@
-import io, os, tempfile, requests, uuid
+import io, os, requests, uuid
 from pypdf import PdfReader
 from PIL import Image
 import pytesseract
 from chromadb.api.types import IDs, Metadatas
-from config import OLLAMA_GEN_URL, CHAT_MODEL, collection
+from config import OLLAMA_GEN_URL, CHAT_MODEL, collection, embedding_model
 
 def pdf_to_text(path: str) -> str:
     text = ""
@@ -50,7 +50,17 @@ Answer:
 
 def add_chunks(filename: str, text: str, ftype: str):
     chunks = chunk_text(text)
+    
+
+    embeddings = embedding_model.encode(chunks).tolist()
+    
     ids: IDs = [str(uuid.uuid4()) for _ in chunks]
     metas: Metadatas = [{"filename": filename, "type": ftype, "idx": i} for i in range(len(chunks))]
-    collection.add(ids=ids, documents=chunks, metadatas=metas)
+    
+    collection.add(
+        ids=ids,
+        documents=chunks,
+        embeddings=embeddings,
+        metadatas=metas
+    )
     return len(chunks)

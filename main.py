@@ -106,4 +106,4 @@ def reset():
     collection = chroma_client.get_or_create_collection("docs")
     return {"status": "ok"}
 
-app.mount("/app", StaticFiles(directory="static", html=True), name="static")
+app.mount("/", StaticFiles(directory="static", html=True), name="static")

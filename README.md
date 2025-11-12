@@ -26,8 +26,9 @@ Retrieval-Augmented Generation system using Chroma DB and Ollama for local docum
 
 ```bash
 pip install -r requirements.txt
-ollama run gpt-oss:20b-cloud
-python app.py
+ollama pull gpt-oss:20b-cloud
+ollama serve
+uvicorn app:main --reload
 ```
 
 - Check live server web

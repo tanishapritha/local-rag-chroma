@@ -1,4 +1,4 @@
-const API = location.origin;
+const API = "http://127.0.0.1:8000";
 const $ = (id) => document.getElementById(id);
 
 const state = { files: [], k: 4, t: 0.1 };
