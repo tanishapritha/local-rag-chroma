@@ -25,7 +25,7 @@ Retrieval-Augmented Generation system using Chroma DB and Ollama for local docum
 ## Installation
 
 ```bash
-pip install chromadb langchain ollama
+pip install -r requirements.txt
 ollama pull llama2
-python rag_pipeline.py
+python app.py
 ```
